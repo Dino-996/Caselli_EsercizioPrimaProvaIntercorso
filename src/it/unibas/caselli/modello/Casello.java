@@ -36,6 +36,14 @@ public class Casello {
     public void addAccesso(Accesso accesso) {
         this.listaAccessi.add(accesso);
     }
+
+    public int contaAccessi() {
+        int conta = 0;
+        for(int i = 0; i < this.listaAccessi.size(); i++) {
+            conta = i + 1;
+        }
+        return conta;
+    }
     
     public Accesso accessoCostoso (Accesso altroAccesso) {
         for (Accesso accesso : listaAccessi) {

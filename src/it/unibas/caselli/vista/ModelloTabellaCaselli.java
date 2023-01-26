@@ -3,7 +3,6 @@ package it.unibas.caselli.vista;
 import it.unibas.caselli.modello.Casello;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.table.AbstractTableModel;
 
 public class ModelloTabellaCaselli extends AbstractTableModel {
 
@@ -40,7 +39,7 @@ public class ModelloTabellaCaselli extends AbstractTableModel {
             return casello.getPosizioneKm();
         }
         if (columnIndex == 3) {
-            return casello.getListaAccessi().size();
+            return casello.contaAccessi();
         }
         return "";
     }

@@ -2,7 +2,7 @@ package it.unibas.caselli.modello;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.logging.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Archivio {
@@ -35,7 +35,7 @@ public class Archivio {
         for (Casello caselloSuccessivo : listaCaselli) {
             if (caselloSuccessivo.getNomeAutostrada().equals(caselloSelezionato.getNomeAutostrada())) {
                 if (caselloSuccessivo.getPosizioneKm() > caselloSelezionato.getPosizioneKm()) {
-                    if (caselloSuccessivo.getListaAccessi().size() >= caselloSelezionato.getListaAccessi().size()) {
+                    if (caselloSuccessivo.contaAccessi() >= caselloSelezionato.contaAccessi()) {
                         altroCasello = caselloSuccessivo;
                         logger.debug("Casello selezionato - Posizione: {} - Lista Accessi: {}", caselloSelezionato.getPosizioneKm(), caselloSelezionato.getListaAccessi().size());
                         logger.debug("Casello successivo - Posizione: {} - Lista Accessi: {}", caselloSuccessivo.getPosizioneKm(), caselloSuccessivo.getListaAccessi().size());
