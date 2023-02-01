@@ -54,7 +54,8 @@ public class ControlloPrincipale {
             }
             Casello caselloSelezionato = listaFiltrata.get(riga);
             Archivio archivio = (Archivio) Applicazione.getInstance().getModello().getBean(Costanti.ARCHIVIO);
-            if (archivio.verificaAccessi(caselloSelezionato) != null) {
+            boolean esito = archivio.verificaAccessi(caselloSelezionato);
+            if (esito) {
                 Applicazione.getInstance().getFrame().getMessaggio("Tutti i caselli successivi in quell'autostrada hanno almeno lo stesso numero di accessi");
             } else {
                 Applicazione.getInstance().getFrame().getErrore("NON tutti i caselli successivi in quell'autostrada hanno almeno lo stesso numero di accessi");

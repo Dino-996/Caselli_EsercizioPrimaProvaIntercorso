@@ -2,7 +2,7 @@ package it.unibas.caselli.modello;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Archivio {
@@ -29,25 +29,46 @@ public class Archivio {
         }
         return listaFiltrata;
     }
-
-    public Casello verificaAccessi(Casello caselloSelezionato) {
+    // ---- INIZIO PUNTO 3 ----
+    /**
+     * Verifica se il casello selezionato è sulla stessa autostrada e se ci sono caselli 
+     * successivi.
+     * 
+     * @param nomeAutostrada
+     * @param posizioneKm
+     * @return 
+     */
+    private Casello filtraCaselli(String nomeAutostrada, double posizioneKm) {
         Casello altroCasello = null;
         for (Casello caselloSuccessivo : listaCaselli) {
-            if (caselloSuccessivo.getNomeAutostrada().equals(caselloSelezionato.getNomeAutostrada())) {
-                if (caselloSuccessivo.getPosizioneKm() > caselloSelezionato.getPosizioneKm()) {
-                    if (caselloSuccessivo.contaAccessi() >= caselloSelezionato.contaAccessi()) {
-                        altroCasello = caselloSuccessivo;
-                        logger.debug("Casello selezionato - Posizione: {} - Lista Accessi: {}", caselloSelezionato.getPosizioneKm(), caselloSelezionato.getListaAccessi().size());
-                        logger.debug("Casello successivo - Posizione: {} - Lista Accessi: {}", caselloSuccessivo.getPosizioneKm(), caselloSuccessivo.getListaAccessi().size());
-                        logger.debug("Altro casello: {}", altroCasello);
-                    }
+            if (altroCasello == null || caselloSuccessivo.getNomeAutostrada().equals(nomeAutostrada)) {
+                if (caselloSuccessivo.getPosizioneKm() > posizioneKm) {
+                    altroCasello = caselloSuccessivo;
                 }
             }
         }
-        logger.debug("Altro casello: {}", altroCasello);
         return altroCasello;
     }
+    
+    /**
+     * Verifica se il casello selezionato dall'utente ha almeno lo stesso numero
+     * di accessi dei caselli successivi.
+     * 
+     * @param caselloSelezionato
+     * @return 
+     */
+    public boolean verificaAccessi(Casello caselloSelezionato) {
+        Casello caselloSuccessivo = filtraCaselli(caselloSelezionato.getNomeAutostrada(), caselloSelezionato.getPosizioneKm());
+        if (caselloSuccessivo != null && caselloSuccessivo.contaAccessi() >= caselloSelezionato.contaAccessi()) {
+            //logger.debug("Casello selezionato - Posizione: {} - Lista Accessi: {}", caselloSelezionato.getPosizioneKm(), caselloSelezionato.getListaAccessi().size());
+            //logger.debug("Casello successivo - Posizione: {} - Lista Accessi: {}", caselloSuccessivo.getPosizioneKm(), caselloSuccessivo.getListaAccessi().size());
+            return true;
+        }
 
+        return false;
+    }
+    // ---- FINE PUNTO 3 ----
+    
     public boolean verificaAccessoCostoso(Casello caselloSelezionato) {
         for (Accesso accesso : caselloSelezionato.getListaAccessi()) {
             Accesso accessoPiuCostoso = caselloSelezionato.accessoCostoso(accesso);

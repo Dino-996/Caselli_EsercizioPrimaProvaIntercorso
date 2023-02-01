@@ -3,6 +3,7 @@ package it.unibas.caselli.vista;
 import it.unibas.caselli.modello.Casello;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.AbstractTableModel;
 
 public class ModelloTabellaCaselli extends AbstractTableModel {
 

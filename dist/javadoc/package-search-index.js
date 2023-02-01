@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"it.unibas.caselli.controllo"},{"l":"it.unibas.caselli.main"},{"l":"it.unibas.caselli.modello"},{"l":"it.unibas.caselli.persistenza"},{"l":"it.unibas.caselli.vista"}]

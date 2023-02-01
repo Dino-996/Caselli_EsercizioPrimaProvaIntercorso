@@ -20,6 +20,14 @@ public class DAOArchivio implements IDAOArchivio {
         casello1.addAccesso(new Accesso("18AG22", "FIAT", 20.50, Costanti.CARTA));
         casello1.addAccesso(new Accesso("46BO12", "ALFA ROMEO", 21.50, Costanti.CONTANTI));
         casello1.addAccesso(new Accesso("90AE32", "AUDI", 22.50, Costanti.CONTANTI));
+        casello1.addAccesso(new Accesso("90AE32", "AUDI", 22.50, Costanti.CONTANTI));
+        casello1.addAccesso(new Accesso("90AE32", "AUDI", 22.50, Costanti.CONTANTI));
+        casello1.addAccesso(new Accesso("90AE32", "AUDI", 22.50, Costanti.CONTANTI));
+        casello1.addAccesso(new Accesso("90AE32", "AUDI", 22.50, Costanti.CONTANTI));
+        casello1.addAccesso(new Accesso("90AE32", "AUDI", 22.50, Costanti.CONTANTI));
+        casello1.addAccesso(new Accesso("90AE32", "AUDI", 22.50, Costanti.CONTANTI));
+        casello1.addAccesso(new Accesso("90AE32", "AUDI", 22.50, Costanti.CONTANTI));
+        casello1.addAccesso(new Accesso("90AE32", "AUDI", 22.50, Costanti.CONTANTI));
 
         casello2.addAccesso(new Accesso("18AG22", "FIAT", 20.50, Costanti.CARTA));
         casello2.addAccesso(new Accesso("18AG22", "FIAT", 20.50, Costanti.CARTA));
